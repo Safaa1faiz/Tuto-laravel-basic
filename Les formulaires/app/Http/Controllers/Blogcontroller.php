@@ -23,25 +23,25 @@ class Blogcontroller extends Controller
             'slug' => \Str::slug($request->input('title'))
         ]);
         return redirect()->route('blog.show', ['slug' => $post->slug, 'post' => $post->id]);
-        dd($request->all());
+        
     }
     public function index(): View {
-        // dd($request->Validated()); 
-        // $Validator = Validator::make([
-        //     'title'=> 'uiguiui',
-        //     'content' => 'azeaz',
+        dd($request->Validated()); 
+        $Validator = Validator::make([
+            'title'=> 'uiguiui',
+            'content' => 'azeaz',
 
-        // ],[
-        //     // 'title'=> 'required|min:8',
-        //     // 'title'=>['required','min:8','regex'],
-        //     // 'title'=>[Rule::unique('posts')->ignore(2)],
-        //     'title'=>['unique:posts'],
+        ],[
+             'title'=> 'required|min:8',
+             'title'=>['required','min:8','regex'],
+             'title'=>[Rule::unique('posts')->ignore(2)],
+            'title'=>['unique:posts'],
 
-        // ]);
-        // // dd($Validator);
-        // // dd($Validator->fails()); // return true or false
-        // // dd($Validator->errors()); //true or return a message of validation  
-        // dd($Validator->Validated()); //return the title or 'The page isn’t redirecting properly'
+        ]);
+         dd($Validator);
+         dd($Validator->fails()); // return true or false
+         dd($Validator->errors()); //true or return a message of validation  
+        dd($Validator->Validated()); //return the title or 'The page isn’t redirecting properly'
 
         return view("blog.index",[
             'posts' => \App\Models\Post::paginate(2),
