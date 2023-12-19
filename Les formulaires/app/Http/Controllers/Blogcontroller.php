@@ -12,6 +12,19 @@ use Validator;
 
 class Blogcontroller extends Controller
 {
+    public function create()
+    {
+        return view('blog.create');
+    }
+    public function store(Request $request) {
+        $post = Post::create([
+            'title' => $request->input('title'),
+            'content' => $request->input('content'),
+            'slug' => \Str::slug($request->input('title'))
+        ]);
+        return redirect()->route('blog.show', ['slug' => $post->slug, 'post' => $post->id]);
+        dd($request->all());
+    }
     public function index(): View {
         // dd($request->Validated()); 
         // $Validator = Validator::make([
