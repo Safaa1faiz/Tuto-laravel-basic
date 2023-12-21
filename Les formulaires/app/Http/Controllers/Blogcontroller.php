@@ -23,7 +23,11 @@ class Blogcontroller extends Controller
             'slug' => \Str::slug($request->input('title'))
         ]);
         return redirect()->route('blog.show', ['slug' => $post->slug, 'post' => $post->id]);
+<<<<<<< HEAD
         
+=======
+      
+>>>>>>> daa78e010cfeef7bb699e6fa28e666a6b77be0c6
     }
     public function index(): View {
         dd($request->Validated()); 
@@ -32,9 +36,15 @@ class Blogcontroller extends Controller
             'content' => 'azeaz',
 
         ],[
+<<<<<<< HEAD
              'title'=> 'required|min:8',
              'title'=>['required','min:8','regex'],
              'title'=>[Rule::unique('posts')->ignore(2)],
+=======
+            'title'=> 'required|min:8',
+             'title'=>['required','min:8','regex'],
+            'title'=>[Rule::unique('posts')->ignore(2)],
+>>>>>>> daa78e010cfeef7bb699e6fa28e666a6b77be0c6
             'title'=>['unique:posts'],
 
         ]);
