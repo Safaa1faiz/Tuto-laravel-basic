@@ -82,15 +82,20 @@ Route::get('/', function () {
 //         ])->name('show');
 // });
 
-Route :: prefix('/blog')->name('blog.')->controller(Blogcontroller::class)->group (function () {
+Route :: prefix('/blog')->name('blog.')->controller(Blogcontroller::class)->group (function () 
+{
 Route::get('/', 'index')->name('index');
 Route::get('/new','create')->name('create');
+
 Route::post('/new', 'store');
-    Route::get('/{slug}-{post}','show')->where ([
-        'id' => '[0-9]+',
-        'slug' => '[a-z0-9\-]+'
-        ])->name('show');
-        Route::get('/{post:slug}','show')->where ([
-          'post' => '[a-z0-9\-]+'
-          ])->name('show');
+
+Route::get('/{post}/edit', 'edit')->name('edit');
+Route::patch('/{post}/edit', 'update');
+
+  Route::get('/{slug}-{post}','show')->where ([
+  'id' => '[0-9]+',
+  'slug' => '[a-z0-9\-]+'
+  ])->name('show');
+
+
 });
